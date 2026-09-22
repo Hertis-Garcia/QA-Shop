@@ -2,7 +2,9 @@ const express = require('express')
 const cors = require('cors')
 require('dotenv').config()
 
+const authRoutes = require('./routes/authRoutes')
 const productRoutes = require('./routes/productRoutes')
+const userRoutes = require('./routes/userRoutes')
 
 const app = express()
 const PORT = process.env.PORT || 4000
@@ -23,7 +25,10 @@ app.get('/api/health', (req, res) => {
   })
 })
 
+// API routes
 app.use('/api/products', productRoutes)
+app.use('/api/auth', authRoutes)
+app.use('/api/users', userRoutes)
 
 app.listen(PORT, () => {
   console.log(`QA-Shop API running on http://localhost:${PORT}`)
