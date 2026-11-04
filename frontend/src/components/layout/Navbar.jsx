@@ -27,12 +27,9 @@ function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-
         <Link to="/" className="flex items-center gap-2">
           <Store size={26} className="text-indigo-600" />
-          <span className="text-xl font-bold text-gray-900">
-            QA-Shop
-          </span>
+          <span className="text-xl font-bold text-gray-900">QA-Shop</span>
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
@@ -46,12 +43,18 @@ function Navbar() {
         </div>
 
         <div className="flex items-center gap-5">
-
           {isAuthenticated ? (
             <>
               <span className="hidden text-sm text-gray-600 sm:block">
                 Hello, {user.firstName}
               </span>
+
+              <Link
+                to="/orders"
+                className="hidden text-sm text-gray-600 transition hover:text-indigo-600 sm:block"
+              >
+                My Orders
+              </Link>
 
               <Link
                 to="/cart"
@@ -88,7 +91,6 @@ function Navbar() {
               </Link>
             </>
           )}
-
         </div>
       </nav>
     </header>

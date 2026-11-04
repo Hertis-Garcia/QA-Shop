@@ -12,6 +12,9 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Cart from "./pages/Cart";
 import ProtectedRoute from "./components/common/ProtectedRoute";
+import Checkout from "./pages/Checkout";
+import Orders from "./pages/Orders";
+import OrderDetails from "./pages/OrderDetails";
 function App() {
   return (
     <BrowserRouter>
@@ -34,6 +37,18 @@ function App() {
               <Route element={<ProtectedRoute />}>
                 <Route path="/cart" element={<Cart />} />
               </Route>
+
+            
+              <Route element={<ProtectedRoute />}>
+                <Route path="/cart" element={<Cart />} />
+
+                <Route path="/checkout" element={<Checkout />} />
+
+                <Route path="/orders" element={<Orders />} />
+
+                <Route path="/orders/:id" element={<OrderDetails />} />
+              </Route>
+
             </Routes>
           </main>
 
