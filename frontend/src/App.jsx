@@ -1,17 +1,35 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+
+import Home from "./pages/Home";
+import Products from "./pages/Products";
+
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-gray-900">
-          QA-Shop
-        </h1>
+    <BrowserRouter>
 
-        <p className="mt-3 text-gray-600">
-          E-commerce QA Testing Application
-        </p>
+      <div className="flex min-h-screen flex-col bg-white">
+
+        <Navbar />
+
+        <main className="flex-1">
+          <Routes>
+
+            <Route path="/" element={<Home />} />
+
+            <Route path="/products" element={<Products />} />
+
+          </Routes>
+        </main>
+
+        <Footer />
+
       </div>
-    </div>
-  )
+
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
