@@ -71,6 +71,15 @@ function Navbar() {
                 <LogOut size={17} />
                 Logout
               </button>
+
+              {user?.role === "ADMIN" && (
+                <Link
+                  to="/admin"
+                  className="hidden text-sm font-medium text-indigo-600 hover:text-indigo-800 md:block"
+                >
+                  Admin Dashboard
+                </Link>
+              )}
             </>
           ) : (
             <>
