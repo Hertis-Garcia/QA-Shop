@@ -1,33 +1,45 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import AuthProvider from "./context/AuthProvider";
+
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 
 import Home from "./pages/Home";
 import Products from "./pages/Products";
+import ProductDetails from "./pages/ProductDetails";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   return (
     <BrowserRouter>
+      <AuthProvider>
+        <div className="flex min-h-screen flex-col bg-white">
 
-      <div className="flex min-h-screen flex-col bg-white">
+          <Navbar />
 
-        <Navbar />
+          <main className="flex-1">
+            <Routes>
+              <Route path="/" element={<Home />} />
 
-        <main className="flex-1">
-          <Routes>
+              <Route path="/products" element={<Products />} />
 
-            <Route path="/" element={<Home />} />
+              <Route
+                path="/products/:id"
+                element={<ProductDetails />}
+              />
 
-            <Route path="/products" element={<Products />} />
+              <Route path="/login" element={<Login />} />
 
-          </Routes>
-        </main>
+              <Route path="/register" element={<Register />} />
+            </Routes>
+          </main>
 
-        <Footer />
+          <Footer />
 
-      </div>
-
+        </div>
+      </AuthProvider>
     </BrowserRouter>
   );
 }
