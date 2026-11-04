@@ -10,13 +10,13 @@ import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-
+import Cart from "./pages/Cart";
+import ProtectedRoute from "./components/common/ProtectedRoute";
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
         <div className="flex min-h-screen flex-col bg-white">
-
           <Navbar />
 
           <main className="flex-1">
@@ -25,19 +25,19 @@ function App() {
 
               <Route path="/products" element={<Products />} />
 
-              <Route
-                path="/products/:id"
-                element={<ProductDetails />}
-              />
+              <Route path="/products/:id" element={<ProductDetails />} />
 
               <Route path="/login" element={<Login />} />
 
               <Route path="/register" element={<Register />} />
+
+              <Route element={<ProtectedRoute />}>
+                <Route path="/cart" element={<Cart />} />
+              </Route>
             </Routes>
           </main>
 
           <Footer />
-
         </div>
       </AuthProvider>
     </BrowserRouter>
